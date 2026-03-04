@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookInsight — 출판사를 위한 시장 인텔리전스</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="layout">
+
+  <!-- ── 사이드바 ── -->
+  <nav class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">📚</div>
+      <div>
+        <div class="logo-text">BookInsight</div>
+        <div class="logo-sub">출판 시장 인텔리전스</div>
+      </div>
+    </div>
+
+    <div class="nav">
+      <div class="nav-group-label">대시보드</div>
+      <a class="nav-item active" href="#section-overview">
+        <span class="icon">📊</span> 시장 개요
+      </a>
+      <a class="nav-item" href="#section-bestseller">
+        <span class="icon">🏆</span> 베스트셀러
+      </a>
+      <a class="nav-item" href="#section-trends">
+        <span class="icon">📈</span> 트렌드 분석
+      </a>
+
+      <div class="nav-group-label">분석</div>
+      <a class="nav-item" href="#section-genre">
+        <span class="icon">📖</span> 장르별 현황
+      </a>
+      <a class="nav-item" href="#section-readers">
+        <span class="icon">👥</span> 독자 분석
+      </a>
+      <a class="nav-item" href="#section-channels">
+        <span class="icon">🛒</span> 판매 채널
+      </a>
+      <a class="nav-item" href="#section-growth">
+        <span class="icon">🌐</span> 디지털 전환
+      </a>
+
+      <div class="nav-group-label">전략</div>
+      <a class="nav-item" href="#section-calendar">
+        <span class="icon">📅</span> 출판 캘린더
+      </a>
+      <a class="nav-item" href="#section-insights">
+        <span class="icon">💡</span> AI 추천
+      </a>
+      <a class="nav-item" href="#section-overview">
+        <span class="icon">⚙️</span> 설정
+      </a>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="update-badge">● LIVE</div>
+      <div>데이터 기준: 2026년 2월</div>
+      <div style="margin-top:4px;">KPB · 교보 · YES24 · 알라딘</div>
+    </div>
+  </nav>
+
+  <!-- ── 메인 콘텐츠 ── -->
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="topbar-title">📊 시장 개요 대시보드</div>
+        <div class="topbar-date">2026년 3월 4일 · Q1 리포트</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <span class="pill pill-up">▲ 전월 대비 +8.3%</span>
+        <span class="pill pill-neutral">Q1 2026 데이터</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- KPI 카드 -->
+      <div id="section-overview" class="section-header">
+        <div>
+          <div class="section-title">핵심 성과 지표</div>
+          <div class="section-desc">2026년 2월 누적 기준 · 전년 동월 대비</div>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card accent1">
+          <span class="kpi-icon">📦</span>
+          <div class="kpi-label">총 판매 부수</div>
+          <div class="kpi-value">4,820<span style="font-size:16px;color:var(--text-muted)">만</span></div>
+          <div class="kpi-sub"><span class="pill pill-up" style="padding:2px 8px;font-size:11px;">▲ 12.1%</span> 전년 대비</div>
+        </div>
+        <div class="kpi-card accent3">
+          <span class="kpi-icon">💰</span>
+          <div class="kpi-label">도서 시장 규모</div>
+          <div class="kpi-value">2.1<span style="font-size:16px;color:var(--text-muted)">조 원</span></div>
+          <div class="kpi-sub"><span class="pill pill-up" style="padding:2px 8px;font-size:11px;">▲ 8.3%</span> 전년 대비</div>
+        </div>
+        <div class="kpi-card accent4">
+          <span class="kpi-icon">📱</span>
+          <div class="kpi-label">전자책 점유율</div>
+          <div class="kpi-value">34.7<span style="font-size:16px;color:var(--text-muted)">%</span></div>
+          <div class="kpi-sub"><span class="pill pill-up" style="padding:2px 8px;font-size:11px;">▲ 4.2%p</span> 전년 대비</div>
+        </div>
+        <div class="kpi-card accent2">
+          <span class="kpi-icon">🆕</span>
+          <div class="kpi-label">신규 발간 종수</div>
+          <div class="kpi-value">6,340<span style="font-size:16px;color:var(--text-muted)">종</span></div>
+          <div class="kpi-sub"><span class="pill pill-down" style="padding:2px 8px;font-size:11px;">▼ 3.8%</span> 전년 대비</div>
+        </div>
+      </div>
+
+      <!-- 매출 트렌드 + 장르 파이 -->
+      <div id="section-trends" class="grid-2">
+        <div class="card">
+          <div class="card-title">월별 도서 매출 추이</div>
+          <div class="card-sub">종이책 vs 전자책 · 최근 12개월 (단위: 억 원)</div>
+          <div class="tab-bar">
+            <button class="tab-btn active" onclick="switchTab(this,'monthly')">월별</button>
+            <button class="tab-btn" onclick="switchTab(this,'quarterly')">분기별</button>
+          </div>
+          <div class="chart-wrap" style="height:240px;">
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </div>
+
+        <div id="section-genre" class="card">
+          <div class="card-title">장르별 판매 비중</div>
+          <div class="card-sub">2026년 Q1 기준 전체 종이책 판매</div>
+          <div style="display:flex;gap:24px;align-items:center;">
+            <div style="width:180px;height:180px;flex-shrink:0;">
+              <canvas id="genreChart"></canvas>
+            </div>
+            <div style="flex:1;">
+              <div class="legend-grid">
+                <div class="legend-item"><div class="legend-dot" style="background:#6c63ff;"></div><span class="legend-name">문학·소설</span><span class="legend-pct">28%</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:#43d9ad;"></div><span class="legend-name">자기계발</span><span class="legend-pct">22%</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:#f7b731;"></div><span class="legend-name">경제·경영</span><span class="legend-pct">18%</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:#ff6584;"></div><span class="legend-name">에세이</span><span class="legend-pct">12%</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:#ff9d42;"></div><span class="legend-name">SF·판타지</span><span class="legend-pct">10%</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:#82d2ff;"></div><span class="legend-name">어린이·YA</span><span class="legend-pct">7%</span></div>
+                <div class="legend-item"><div class="legend-dot" style="background:#b8c0e0;"></div><span class="legend-name">기타</span><span class="legend-pct">3%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 베스트셀러 -->
+      <div id="section-bestseller" class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+          <div class="card-title">🏆 종합 베스트셀러 Top 10</div>
+          <span class="pill pill-neutral" style="font-size:11px;">2026년 2월 기준</span>
+        </div>
+        <div class="card-sub">교보문고 · YES24 · 알라딘 3사 종합 순위</div>
+        <table class="rank-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>도서 정보</th>
+              <th>장르</th>
+              <th>출판사</th>
+              <th>주간 판매량</th>
+              <th>전주 대비</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="rank-num top3">1</div></td>
+              <td><div class="book-info"><span class="book-title">불편한 편의점 3</span><span class="book-author">김호연</span></div></td>
+              <td><span class="genre-badge genre-lit">문학</span></td>
+              <td>나무옆의자</td>
+              <td>
+                <div>42,800부</div>
+                <div class="bar-mini"><div class="bar-mini-fill" style="width:100%;background:var(--accent4);"></div></div>
+              </td>
+              <td><span class="pill pill-up" style="padding:2px 7px;font-size:11px;">▲ 15%</span></td>
+            </tr>
+            <tr>
+              <td><div class="rank-num top3">2</div></td>
+              <td><div class="book-info"><span class="book-title">퀀텀 마인드셋</span><span class="book-author">박지영</span></div></td>
+              <td><span class="genre-badge genre-self">자기계발</span></td>
+              <td>위즈덤하우스</td>
+              <td>
+                <div>38,100부</div>
+                <div class="bar-mini"><div class="bar-mini-fill" style="width:89%;"></div></div>
+              </td>
+              <td><span class="pill pill-up" style="padding:2px 7px;font-size:11px;">▲ 7%</span></td>
+            </tr>
+            <tr>
+              <td><div class="rank-num top3">3</div></td>
+              <td><div class="book-info"><span class="book-title">AI 이후의 세계</span><span class="book-author">이준석</span></div></td>
+              <td><span class="genre-badge genre-econ">경제</span></td>
+              <td>한빛미디어</td>
+              <td>
+                <div>31,500부</div>
+                <div class="bar-mini"><div class="bar-mini-fill" style="width:74%;background:var(--accent2);"></div></div>
+              </td>
+              <td><span class="pill pill-up" style="padding:2px 7px;font-size:11px;">▲ 23%</span></td>
+            </tr>
+            <tr>
+              <td><div class="rank-num">4</div></td>
+              <td><div class="book-info"><span class="book-title">달의 뒷면</span><span class="book-author">최수연</span></div></td>
+              <td><span class="genre-badge genre-mystery">미스터리</span></td>
+              <td>문학동네</td>
+              <td>
+                <div>27,200부</div>
+                <div class="bar-mini"><div class="bar-mini-fill" style="width:64%;background:#ff9d42;"></div></div>
+              </td>
+              <td><span class="pill pill-down" style="padding:2px 7px;font-size:11px;">▼ 4%</span></td>
+            </tr>
+            <tr>
+              <td><div class="rank-num">5</div></td>
+              <td><div class="book-info"><span class="book-title">새벽 세 시의 편지</span><span class="book-author">정한아</span></div></td>
+              <td><span class="genre-badge genre-essay">에세이</span></td>
+              <td>arte</td>
+              <td>
+                <div>24,600부</div>
+                <div class="bar-mini"><div class="bar-mini-fill" style="width:58%;background:#82d2ff;"></div></div>
+              </td>
+              <td><span class="pill pill-up" style="padding:2px 7px;font-size:11px;">▲ 11%</span></td>
+            </tr>
+            <tr>
+              <td><div class="rank-num">6</div></td>
+              <td><div class="book-info"><span class="book-title">내일의 별자리</span><span class="book-author">김린</span></div></td>
+              <td><span class="genre-badge genre-sf">SF</span></td>
+              <td>황금가지</td>
+              <td>
+                <div>21,800부</div>
+                <div class="bar-mini"><div class="bar-mini-fill" style="width:51%;background:var(--accent3);"></div></div>
+              </td>
+              <td><span class="pill pill-up" style="padding:2px 7px;font-size:11px;">▲ 34%</span></td>
+            </tr>
+            <tr>
+              <td><div class="rank-num">7</div></td>
+              <td><div class="book-info"><span class="book-title">슈퍼 에이지의 경제학</span><span class="book-author">이형석</span></div></td>
+              <td><span class="genre-badge genre-econ">경제</span></td>
+              <td>다산북스</td>
+              <td>
+                <div>19,400부</div>
+                <div class="bar-mini"><div class="bar-mini-fill" style="width:45%;background:var(--accent2);"></div></div>
+              </td>
+              <td><span class="pill pill-down" style="padding:2px 7px;font-size:11px;">▼ 8%</span></td>
+            </tr>
+            <tr>
+              <td><div class="rank-num">8</div></td>
+              <td><div class="book-info"><span class="book-title">오늘의 습관 혁명</span><span class="book-author">강민준</span></div></td>
+              <td><span class="genre-badge genre-self">자기계발</span></td>
+              <td>웅진씽크빅</td>
+              <td>
+                <div>18,200부</div>
+                <div class="bar-mini"><div class="bar-mini-fill" style="width:43%;"></div></div>
+              </td>
+              <td><span class="pill pill-neutral" style="padding:2px 7px;font-size:11px;">— 0%</span></td>
+            </tr>
+            <tr>
+              <td><div class="rank-num">9</div></td>
+              <td><div class="book-info"><span class="book-title">해가 뜨는 곳</span><span class="book-author">손은진</span></div></td>
+              <td><span class="genre-badge genre-lit">문학</span></td>
+              <td>창비</td>
+              <td>
+                <div>16,700부</div>
+                <div class="bar-mini"><div class="bar-mini-fill" style="width:39%;"></div></div>
+              </td>
+              <td><span class="pill pill-up" style="padding:2px 7px;font-size:11px;">▲ 6%</span></td>
+            </tr>
+            <tr>
+              <td><div class="rank-num">10</div></td>
+              <td><div class="book-info"><span class="book-title">마음 의학</span><span class="book-author">유재선</span></div></td>
+              <td><span class="genre-badge genre-self">자기계발</span></td>
+              <td>북스힐</td>
+              <td>
+                <div>15,300부</div>
+                <div class="bar-mini"><div class="bar-mini-fill" style="width:36%;"></div></div>
+              </td>
+              <td><span class="pill pill-up" style="padding:2px 7px;font-size:11px;">▲ 2%</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 독자 연령 + 판매 채널 -->
+      <div id="section-readers" class="grid-2">
+        <div class="card">
+          <div class="card-title">독자 연령대 분포</div>
+          <div class="card-sub">2025 vs 2026 Q1 비교 (온·오프라인 통합)</div>
+          <div class="chart-wrap" style="height:220px;">
+            <canvas id="ageChart"></canvas>
+          </div>
+        </div>
+
+        <div id="section-channels" class="card">
+          <div class="card-title">판매 채널 점유율</div>
+          <div class="card-sub">2026년 Q1 · 전분기 대비 변화</div>
+          <div style="margin-top:8px;">
+            <div class="channel-row">
+              <div class="channel-name">온라인 서점</div>
+              <div class="channel-bar-wrap">
+                <div class="channel-bar">
+                  <div class="channel-fill" style="width:52%;background:var(--accent);"></div>
+                </div>
+              </div>
+              <div class="channel-pct">52%</div>
+              <div class="channel-change"><span class="pill pill-up" style="padding:1px 6px;font-size:10px;">▲ 2%p</span></div>
+            </div>
+            <div class="channel-row">
+              <div class="channel-name">오프라인 서점</div>
+              <div class="channel-bar-wrap">
+                <div class="channel-bar">
+                  <div class="channel-fill" style="width:28%;background:var(--accent3);"></div>
+                </div>
+              </div>
+              <div class="channel-pct">28%</div>
+              <div class="channel-change"><span class="pill pill-down" style="padding:1px 6px;font-size:10px;">▼ 3%p</span></div>
+            </div>
+            <div class="channel-row">
+              <div class="channel-name">구독 서비스</div>
+              <div class="channel-bar-wrap">
+                <div class="channel-bar">
+                  <div class="channel-fill" style="width:12%;background:var(--accent4);"></div>
+                </div>
+              </div>
+              <div class="channel-pct">12%</div>
+              <div class="channel-change"><span class="pill pill-up" style="padding:1px 6px;font-size:10px;">▲ 4%p</span></div>
+            </div>
+            <div class="channel-row">
+              <div class="channel-name">도서관·기관</div>
+              <div class="channel-bar-wrap">
+                <div class="channel-bar">
+                  <div class="channel-fill" style="width:8%;background:var(--accent2);"></div>
+                </div>
+              </div>
+              <div class="channel-pct">8%</div>
+              <div class="channel-change"><span class="pill pill-down" style="padding:1px 6px;font-size:10px;">▼ 1%p</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 장르 성장률 -->
+      <div id="section-growth" class="card">
+        <div class="card-title">장르별 성장률 분석</div>
+        <div class="card-sub">전년 동기 대비 판매 성장률 · 버블 크기 = 시장 규모</div>
+        <div class="chart-wrap" style="height:260px;">
+          <canvas id="growthChart"></canvas>
+        </div>
+      </div>
+
+      <!-- 핵심 인사이트 -->
+      <div id="section-insights" class="card">
+        <div class="card-title">💡 이달의 핵심 인사이트</div>
+        <div class="card-sub">데이터 기반 출판 전략 추천</div>
+        <div class="insight-list" style="margin-top:12px;">
+          <div class="insight-item type-hot">
+            <div class="insight-icon">🔥</div>
+            <div class="insight-body">
+              <div class="insight-title">AI·기술 관련 도서 수요 폭발적 증가</div>
+              <div class="insight-desc">2026년 Q1 기준 AI·테크 관련 서적 판매가 전년 대비 <strong style="color:var(--accent2);">+61%</strong> 급증했습니다. "AI 이후의 세계"가 3위에 등극하며 이 트렌드를 입증합니다. 기술·사회변화 접목 기획이 시급합니다.</div>
+            </div>
+          </div>
+          <div class="insight-item type-up">
+            <div class="insight-icon">📱</div>
+            <div class="insight-body">
+              <div class="insight-title">구독 서비스 채널 분기 대비 +4%p 성장</div>
+              <div class="insight-desc">밀리의서재·리디셀렉트 등 구독 플랫폼이 빠르게 성장 중입니다. 독점 연재·오디오북 번들 등 <strong style="color:var(--accent3);">구독 전용 콘텐츠 전략</strong>을 통해 신규 독자층 확보를 고려하십시오.</div>
+            </div>
+          </div>
+          <div class="insight-item type-warn">
+            <div class="insight-icon">⚠️</div>
+            <div class="insight-body">
+              <div class="insight-title">신규 발간 종수 감소세 — 옥석 가리기 필요</div>
+              <div class="insight-desc">신간 출판 종수가 전년 대비 <strong style="color:var(--accent4);">-3.8%</strong> 줄었지만, 베스트셀러 집중도는 상승했습니다. 다수 출판보다 소수 타이틀에 마케팅 역량을 집중하는 전략이 유효합니다.</div>
+            </div>
+          </div>
+          <div class="insight-item type-up">
+            <div class="insight-icon">🚀</div>
+            <div class="insight-body">
+              <div class="insight-title">SF·판타지 장르 가파른 성장 (+34%)</div>
+              <div class="insight-desc">"내일의 별자리"의 주간 판매 34% 급등에서 확인되듯, SF·판타지는 2030세대 독자를 중심으로 빠르게 성장 중입니다. 한국형 SF 발굴 및 번역 기획에 적극 투자할 시점입니다.</div>
+            </div>
+          </div>
+          <div class="insight-item type-info">
+            <div class="insight-icon">👥</div>
+            <div class="insight-body">
+              <div class="insight-title">30대 독자 비중 증가 — 실용·자기계발 수요↑</div>
+              <div class="insight-desc">30~39세 독자 비중이 전년 대비 +3%p 상승해 <strong style="color:var(--accent);">최대 독자층(31%)</strong>으로 자리잡았습니다. 커리어·투자·건강 관련 실용서 기획 및 SNS 마케팅 강화를 추천합니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 계절별 출판 전략 -->
+      <div id="section-calendar" class="card">
+        <div class="card-title">📅 분기별 출판 전략 캘린더</div>
+        <div class="card-sub">과거 3년 판매 데이터 기반 최적 출판 시점 분석</div>
+        <div class="chart-wrap" style="height:220px;">
+          <canvas id="seasonChart"></canvas>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px;">
+          <div style="background:var(--surface2);border-radius:10px;padding:14px;border-top:3px solid var(--accent);">
+            <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px;">Q1 (1~3월)</div>
+            <div style="font-size:12px;color:var(--text-muted);">신년 자기계발·목표 설정 도서 최적 시즌. 에세이 판매 피크.</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:10px;padding:14px;border-top:3px solid var(--accent3);">
+            <div style="font-size:12px;font-weight:700;color:var(--accent3);margin-bottom:6px;">Q2 (4~6월)</div>
+            <div style="font-size:12px;color:var(--text-muted);">입학·취업 시즌. 경제·경영, 수험서 판매 급증. 화제작 론칭 적기.</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:10px;padding:14px;border-top:3px solid var(--accent4);">
+            <div style="font-size:12px;font-weight:700;color:var(--accent4);margin-bottom:6px;">Q3 (7~9월)</div>
+            <div style="font-size:12px;color:var(--text-muted);">여름 성수기. 소설·여행 도서 강세. 청소년 독서 캠프 연계 마케팅 유효.</div>
+          </div>
+          <div style="background:var(--surface2);border-radius:10px;padding:14px;border-top:3px solid var(--accent2);">
+            <div style="font-size:12px;font-weight:700;color:var(--accent2);margin-bottom:6px;">Q4 (10~12월)</div>
+            <div style="font-size:12px;color:var(--text-muted);">연간 최대 성수기. 시상식 시즌 연계 문학 도서 및 선물용 패키지 기획 필수.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </main>
+</div>
+
+<script src="/js/charts.js" defer></script>
+<script>
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
